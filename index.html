@@ -51,7 +51,9 @@
 							data[input.attr("name")] = input.html()
 							break;
 							default:
-							data[ input.attr("name")] = input.val()
+							data[ input.attr("name")] = input.attr("name") != "precio"
+																					? ( "'" +input.val()+ "'")
+																					: input.val()
 						}
 				} ) ;
 
@@ -59,7 +61,10 @@
 					url : form.attr("data-action"),
 					type : "POST",
 					dataType : "JSON",
-					data : data,
+					data : {
+						table : "promociones",
+						fields : data
+					},
 					success : function(data) {
 						if( data.response ){
 							window.location.reload()
