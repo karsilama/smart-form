@@ -1,0 +1,24 @@
+{
+  "name": "smart-form",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karsilama/smart-form.git"
+  },
+  "author": "jesuscolavita",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karsilama/smart-form/issues"
+  },
+  "homepage": "https://github.com/karsilama/smart-form#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "bootstrap-filestyle": "^1.2.1",
+    "jquery": "^3.1.0"
+  }
+}
