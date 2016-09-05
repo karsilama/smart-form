@@ -4,32 +4,40 @@
 <script type="text/javascript" src="path.to.boostrap.js"></script>
 <script type="text/javascript" src="path.to.filesylte.js"></script>
 
-<form data-action="do.something.php" enctype="multipart/form-data" method="post">
-	<div class="form-group">
-		<input type="text" class="field form-control" required name="descripcion" placeholder="Nombre">
-	</div>
-	<div class="form-group">
-		<div class="input-group">
-			<div class="input-group-addon">$</div>
-			<input type="number" name="precio" required class="field form-control" placeholder="99.99">
-		</div>
-	</div>
-	<div class="form-group">
-		<div class="clearfix">
-			<div class="pull-right">
-				<input type="file" name="image" required class="field filestyle" data-classButton="btn btn-default" data-input="false">
-			</div>
-		</div>
-	</div>
-	<div class="form-group">
-		<div class="clearfix">
-			<div class="pull-right">
-				<button type="button" name="promocion" class="ajax btn btn-success btn-xs">Guardar</button>
-			</div>
-		</div>
-	</div>
-</form>
 
+
+<form action="javascript:void(0)" data-action="/sa_v2/php.insert.php" class="ajax" data-table="relaciones_promociones" method="POST">
+												<div class="form-group">
+													<div class="clearfix">
+														<input type="hidden" name="id_promocion" class="field">
+														<input type="text" class="form-control"
+																		id="typeahead-promociones"
+																		data-special="data-id"
+																		data-provider="typeahead"
+																		required
+																		placeholder="Nombre de la promoci&oacute;n">
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="clearfix">
+														<input type="hidden" name="id_plato" class="field">
+														<input type="text" class="form-control"
+																		id="typeahead-platos"
+																		data-provider="typeahead"
+																		required
+																		placeholder="T&iacute;tulo o descripci&oacute;n del plato.">
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="clearfix">
+														<div class="pull-right">
+															<button type="submit" name="plato" class="ajax btn btn-success btn-xs">Guardar</button>
+														</div>
+													</div>
+												</div>
+											</form>
+											
+											
 
 
 <script charset="UTF-8">
