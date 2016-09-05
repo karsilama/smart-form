@@ -54,7 +54,7 @@
 					var o = this,
 						input = $(o),
 						tagName = o.tagName;
-											switch (tagName) {
+					switch (tagName) {
 						case "TEXTAREA":
 						data[theName] = input.html()
 						break;
@@ -63,6 +63,8 @@
 															? ( "'" +input.val()+ "'")
 															: input.val()
 					}
+					data[theName] = input.hasClass("numeric") ? data[theName].replace(/\'/g, "") : data[theName] ; 
+
 
 				} ) ;
 
