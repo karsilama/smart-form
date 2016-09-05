@@ -9,7 +9,7 @@
 <form action="javascript:void(0)" data-action="/sa_v2/php.insert.php" class="ajax" data-table="relaciones_promociones" method="POST">
 												<div class="form-group">
 													<div class="clearfix">
-														<input type="hidden" name="id_promocion" class="field">
+														<input type="hidden" name="id_promocion" class="numeric field">
 														<input type="text" class="form-control"
 																		id="typeahead-promociones"
 																		data-special="data-id"
@@ -20,7 +20,7 @@
 												</div>
 												<div class="form-group">
 													<div class="clearfix">
-														<input type="hidden" name="id_plato" class="field">
+														<input type="hidden" name="id_plato" class="numeric field">
 														<input type="text" class="form-control"
 																		id="typeahead-platos"
 																		data-provider="typeahead"
@@ -35,56 +35,52 @@
 														</div>
 													</div>
 												</div>
-											</form>
-											
+											</form>											
 											
 
 
 <script charset="UTF-8">
 	$(document).ready( function(){
+		
+		$("form.ajax").submit( function(){
 
-		$.each( $(".ajax"), function() {
+			var form = $(this),
+					data = {} ;
 
-			$(this).bind("click", function(){
-
-				var form = $(this).closest("form"),
-						data = {} ;
-
-				$.each( form.find(".field"), function(){
-					var o = this,
-						input = $(o),
-						tagName = o.tagName;
+			$.each( form.find(".field"), function(){
+				var o = this,
+					input = $(o),
+					theName = input.attr("name"),
+					tagName = o.tagName;
 					switch (tagName) {
 						case "TEXTAREA":
 						data[theName] = input.html()
 						break;
 						default:
-						data[theName] = input.attr("type") != "number" || input.hasClass("numeric")
+						data[theName] = input.attr("type") != "number"
 															? ( "'" +input.val()+ "'")
 															: input.val()
 					}
 					data[theName] = input.hasClass("numeric") ? data[theName].replace(/\'/g, "") : data[theName] ; 
+			} ) ;
 
-
-				} ) ;
-
-				$.ajax( {
-					url : form.attr("data-action"),
-					type : "POST",
-					dataType : "JSON",
-					data : {
-						table : "promociones",
-						fields : data
-					},
-					success : function(data) {
-						if( data.response ){
-							window.location.reload()
-						}
+			$.ajax( {
+				url : form.attr("data-action"),
+				type : "POST",
+				dataType : "JSON",
+				data : {
+					table : form.attr("data-table"),
+					fields : data
+				},
+				success : function(data) {
+					if( data.response ){
+						window.location.reload()
 					}
-				} )
+				}
+			} )
 
-			});
-		} )
+		});
 
+	
 	} ) ;
 </script>
