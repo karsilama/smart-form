@@ -46,15 +46,16 @@
 					var o = this,
 						input = $(o),
 						tagName = o.tagName;
-						switch (tagName) {
-							case "TEXTAREA":
-							data[input.attr("name")] = input.html()
-							break;
-							default:
-							data[ input.attr("name")] = input.attr("name") != "precio"
-																					? ( "'" +input.val()+ "'")
-																					: input.val()
-						}
+											switch (tagName) {
+						case "TEXTAREA":
+						data[theName] = input.html()
+						break;
+						default:
+						data[theName] = input.attr("type") != "number" || input.hasClass("numeric")
+															? ( "'" +input.val()+ "'")
+															: input.val()
+					}
+
 				} ) ;
 
 				$.ajax( {
